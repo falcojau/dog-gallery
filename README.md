@@ -3,7 +3,7 @@
 A responsive React application that fetches dog images from The Dog API, allowing users to explore, favorite, and manage their favorite dog pictures with persistent localStorage.
 
 <p align="center">
-  <img width="538" height="575" alt="Captura de pantalla 2026-05-29 a las 19 37 35" src="https://github.com/user-attachments/assets/daa00cb4-8bdf-453b-ba9e-c97f0481b30d">
+  <img width="1032" height="1326" alt="image" src="https://github.com/user-attachments/assets/32a4efe2-4395-44c0-b2e9-64c6c3266ecd" />
 </p>
 
 ---
@@ -31,4 +31,4 @@ A responsive React application that fetches dog images from The Dog API, allowin
 
 
 ## 🏆 My Project
-https://falcojau.github.io/dog-gallery/
+[https://falcojau.github.io/dog-gallery/](https://falcojau.github.io/dog-gallery/)
