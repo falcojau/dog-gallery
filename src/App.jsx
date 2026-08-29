@@ -16,7 +16,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [showFavorites, setShowFavorites] = useState(false);
 
-  const { favorites, addFavorite, removeFavorite, isFavorite } = useFavorites();
+  const { favorites, addFavorite, removeFavorite, clearFavorites, isFavorite } = useFavorites();
 
   // Fetch inicial de perros
   useEffect(() => {
@@ -61,6 +61,7 @@ export default function App() {
           <FavoritesGallery
             favorites={favorites}
             onRemoveFavorite={removeFavorite}
+            onClearFavorites={clearFavorites}
           />
         ) : (
           <DogGallery

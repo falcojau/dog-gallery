@@ -1,23 +1,39 @@
 import DogCard from './DogCard.jsx';
+import '../styles/DogGallery.css';
 
-export default function FavoritesGallery({ favorites, addFavorite, onRemoveFavorite }) {
+export default function FavoritesGallery({ favorites, addFavorite, onRemoveFavorite, onClearFavorites }) {
+  const hasFavorites = favorites.length > 0;
+
   return (
-    <div className="favorites-gallery">
-      <p>Favorites: {favorites.length}</p>
-      {favorites.length === 0 ?
-        (
-          <p>No favorites yet</p>
-        ) : (
-          favorites.map((dog) => (
-            <DogCard
-              key={dog.id}
-              dog={dog}
-              isFavorite={() => true} // En favoritos, todos son favoritos
-              onAddFavorite={addFavorite} // No se usa en favoritos, pero lo pasamos por consistencia
-              onRemoveFavorite={onRemoveFavorite} // Pasamos función para eliminar
-            />
-          ))
+    <div className="dog-gallery">
+      <header className="gallery-intro">
+        <div>
+          <h2>Favorites</h2>
+          <p>
+            {hasFavorites
+              ? `${favorites.length} saved`
+              : 'Nothing saved yet'}
+          </p>
+        </div>
+        {hasFavorites && (
+          <button
+            type="button"
+            className="gallery-intro__clear"
+            onClick={onClearFavorites}
+          >
+            Clear all favorites
+          </button>
         )}
+      </header>
+      {favorites.map((dog) => (
+        <DogCard
+          key={dog.id}
+          dog={dog}
+          isFavorite={() => true}
+          onAddFavorite={addFavorite}
+          onRemoveFavorite={onRemoveFavorite}
+        />
+      ))}
     </div>
   );
 }
