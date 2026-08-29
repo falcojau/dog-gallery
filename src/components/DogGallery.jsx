@@ -4,7 +4,10 @@ import '../styles/DogGallery.css';
 export default function DogGallery({ dogs, isFavorite, onAddFavorite, onRemoveFavorite }) {
   return (
     <div className="dog-gallery">
-      <p id="primero">Have a look and choose your favorites - {dogs.length} dogs loaded</p>
+      <header className="gallery-intro">
+        <h2>Gallery</h2>
+        <p>{dogs.length} photos</p>
+      </header>
       {dogs.map((dog) => (
         <DogCard
           key={dog.id}

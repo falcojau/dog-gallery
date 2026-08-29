@@ -15,18 +15,32 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-.dog-card img {
+.dog-card__media {
+  position: relative;
   width: 100%;
-  height: 250px;
-  aspect-ratio: 1;
-  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   border-radius: 12px;
   margin-bottom: 15px;
+  background: #f5f5f7;
+}
+
+.dog-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.dog-card:hover img {
+  transform: scale(1.04);
 }
 
 .dog-card button {
   padding: 12px 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: var(--accent);
   color: white;
   border: none;
   border-radius: 10px;
@@ -39,7 +53,7 @@
 }
 
 .dog-card button:hover {
-  box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 15px rgba(0, 113, 227, 0.35);
 }
 
 .dog-card button:active {
@@ -48,7 +62,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .dog-card img {
-    height: 200px;
+  .dog-card__media {
+    aspect-ratio: 1;
   }
 }

@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 
 export function useFavorites() {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('dogFavorites');
-    if (saved) {
-      try {
-        setFavorites(JSON.parse(saved));
-      } catch (error) {
-        console.error('Error al cargar favoritos:', error);
-      }
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const saved = localStorage.getItem('dogFavorites');
+      if (!saved) return [];
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.error('Error al cargar favoritos:', error);
+      return [];
     }
-  }, []);
+  });
 
   useEffect(() => {
     localStorage.setItem('dogFavorites', JSON.stringify(favorites));
@@ -21,12 +20,18 @@ export function useFavorites() {
   // Sincroniza favoritos entre pestañas del navegador
   useEffect(() => {
     const handleStorageChange = (event) => {
-      if (event.key === 'dogFavorites' && event.newValue) {
-        try {
-          setFavorites(JSON.parse(event.newValue));
-        } catch (error) {
-          console.error('Error sincronizando favoritos:', error);
-        }
+      if (event.key !== 'dogFavorites') return;
+
+      if (!event.newValue) {
+        setFavorites([]);
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(event.newValue);
+        setFavorites(Array.isArray(parsed) ? parsed : []);
+      } catch (error) {
+        console.error('Error sincronizando favoritos:', error);
       }
     };
 
@@ -50,10 +55,15 @@ export function useFavorites() {
     return favorites.some((fav) => fav.id === dogId);
   };
 
+  const clearFavorites = () => {
+    setFavorites([]);
+  };
+
   return {
     favorites,
     addFavorite,
     removeFavorite,
+    clearFavorites,
     isFavorite,
   };
 }
