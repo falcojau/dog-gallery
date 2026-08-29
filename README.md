@@ -3,7 +3,7 @@
 A responsive React application that fetches dog images from The Dog API, allowing users to explore, favorite, and manage their favorite dog pictures with persistent localStorage.
 
 <p align="center">
-  <img width="1032" height="1326" alt="image" src="https://github.com/user-attachments/assets/32a4efe2-4395-44c0-b2e9-64c6c3266ecd" />
+  <img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/32a4efe2-4395-44c0-b2e9-64c6c3266ecd" />
 </p>
 
 ---
